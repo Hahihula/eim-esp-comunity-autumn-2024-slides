@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>The new and shiny</h2>
+        <h3>ESP-IDF Installation Manager</h3>
+        <img src="./images/esplogo.svg" style="width: 50%;">
+
+      </section>
+      <section data-markdown>
+        ## Today's topics:
+        - introduction
+        - current features
+        - future goals
+
+      </section>
+      <section data-markdown>
+        ## introduction
+      </section>
+      <section>
+        we would like to present to you a new IDF installer
+      </section>
+      <section>
+        <h1>EIM</h1>
+      </section>
+      <section>
+        It's in early release stage, and we would like to collect feedback from the early adopters
+      </section>
+      <section data-markdown>
+        ## features
+      </section>
+      <section>
+        <h2>cross-platform cli tool</h2>
+        <img style="width: 25%;" src="./images/Apple_logo_arcoiris.svg">
+        <img style="width: 25%;" src="./images/Windows_logo.svg">
+        <img style="width: 25%;" src="./images/Tux.svg">
+
+      </section>
+      <section>
+        <section data-markdown>
+          ## heavily configurable
+        </section>
+        <section>
+          <h3>Every parameter can be set as CLI argument</h3>
+          <pre><code data-trim data-noescape>
+Usage: idf-im-cli [OPTIONS]
+
+Options:
+  -c, --config <FILE>
+  -t, --target <TARGET>
+  -i, --idf-versions <IDF_VERSIONS>
+      --tool-download-folder-name <TOOL_DOWNLOAD_FOLDER_NAME>
+      --tool-install-folder-name <TOOL_INSTALL_FOLDER_NAME>
+      --idf-tools-path <IDF_TOOLS_PATH>
+          Path to tools.json file relative from ESP-IDF installation folder
+      --tools-json-file <TOOLS_JSON_FILE>
+          Path to idf_tools.py file relative from ESP-IDF installation folder
+  -n, --non-interactive <NON_INTERACTIVE>
+          [possible values: true, false]
+  -m, --mirror <MIRROR>
+          url for download mirror to use instead of github.com
+      --idf-mirror <IDF_MIRROR>
+          url for download mirror to use instead of github.com for downloading esp-idf
+  -v, --verbose...
+          Increase verbosity level (can be used multiple times)
+  -l, --locale <LOCALE>
+          Set the language for the wizard (en, cn)
+      --log-file <LOG_FILE>
+          file in which logs will be stored (default: eim.log)
+  -h, --help
+          Print help (see a summary with '-h')
+  -V, --version
+          Print version
+            </code></pre>
+        </section>
+
+
+        <section>
+          <h3>You can provide a config file</h3>
+          <pre><code data-trim data-noescape>
+```toml
+path = "/tmp/esp-new/"
+idf_path = "/tmp/esp-new/v5.3/esp-idf"
+tool_download_folder_name = "dist"
+tool_install_folder_name = "tools"
+target = ["all"]
+idf_versions = ["v5.3"]
+tools_json_file = "tools/tools.json"
+idf_tools_path = "./tools/idf_tools.py"
+mirror = "https://github.com"
+idf_mirror = "https://github.com"
+```
+              </code></pre>
+        </section>
+        <section data-markdown>
+          ### you can set parameters as ENV variables
+
+        </section>
+      </section>
+      <section data-markdown>
+        ## repeatable
+        - at the end of wizard user is prompted if he wants to save the config
+        - this config can be distributed
+        - when provided as input, eim will do the exact same installation
+      </section>
+      <section>
+        <h2>Easy to use</h2>
+        <p>Simple wizard will guide you through the installation process</p>
+        <img style="width: 255%;" src="./images/wizard.gif">
+      </section>
+      <section>
+        <h2>multilanguage</h2>
+        <p>The CLI application is available in English and Chinese, and the list of languages can be easily extended</p>
+        <p>CLI 应用既可以用英语和中文来交互，并且语言列表是很容易扩展的</p>
+        <img style="width: 255%;" src="./images/cn.gif">
+      </section>
+      <section data-markdown>
+        ## Single binary
+        - easily deliverable
+        - no dependencies
+        - On Windows we offer to install IDF prerequisites
+        - on the POSIX system we expect the user would prefer to get prerequisites on it's own
+
+
+      </section>
+      <section data-markdown>
+        ## future goals
+        - the primary tool for IDF instalation
+        - full integration with IDE plugins
+        - GUI version
+        - offline installation
+
+      </section>
+      <section>
+        <div>
+          <p>Please report any hickups as github issues</p>
+          <div style="width: 33%;left:0px;display: inline-block;">
+            <h2>Releases:</h2>
+            <img style="width: 100%;" src="./images/releases.svg">
+          </div>
+          <div style="width: 33%;right:0px;display: inline-block;">
+            <h2>Docs:</h2>
+            <img style="width: 100%;" src="./images/docs.svg">
+          </div>
+        </div>
+        <div>
+          <p>Thanks for your attention</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="cs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Nový</h2>
+        <h3>ESP-IDF Installation Manager</h3>
+        <img src="./images/esplogo.svg" style="width: 50%;">
+
+      </section>
+      <section data-markdown>
+        ## Dnešní témata:
+        - úvod
+        - současná funkcionalita
+        - budoucí cíle
+
+      </section>
+      <section data-markdown>
+        ## úvod
+      </section>
+      <section>
+        rádi bychom vám představili nový instalátor IDF jménem
+      </section>
+      <section>
+        <h1>EIM</h1>
+      </section>
+      <section>
+        Jde o jedno z prvních vydání a rádi bychom získali zpětnou vazbu od prvních uživatelů
+      </section>
+      <section data-markdown>
+        ## funkce
+      </section>
+      <section>
+        <h2>Jde o multiplatformní CLI nástroj</h2>
+        <img style="width: 25%;" src="./images/Apple_logo_arcoiris.svg">
+        <img style="width: 25%;" src="./images/Windows_logo.svg">
+        <img style="width: 25%;" src="./images/Tux.svg">
+
+      </section>
+      <section>
+        <section data-markdown>
+          ## je vysoce konfigurovatelný
+        </section>
+        <section>
+          <h3>Každý parametr lze nastavit jako CLI argument</h3>
+          <pre><code data-trim data-noescape>
+              Usage: idf-im-cli [OPTIONS]
+              
+              Options:
+                -c, --config <FILE>
+                -t, --target <TARGET>
+                -i, --idf-versions <IDF_VERSIONS>
+                    --tool-download-folder-name <TOOL_DOWNLOAD_FOLDER_NAME>
+                    --tool-install-folder-name <TOOL_INSTALL_FOLDER_NAME>
+                    --idf-tools-path <IDF_TOOLS_PATH>
+                        Path to tools.json file relative from ESP-IDF installation folder
+                    --tools-json-file <TOOLS_JSON_FILE>
+                        Path to idf_tools.py file relative from ESP-IDF installation folder
+                -n, --non-interactive <NON_INTERACTIVE>
+                        [possible values: true, false]
+                -m, --mirror <MIRROR>
+                        url for download mirror to use instead of github.com
+                    --idf-mirror <IDF_MIRROR>
+                        url for download mirror to use instead of github.com for downloading esp-idf
+                -v, --verbose...
+                        Increase verbosity level (can be used multiple times)
+                -l, --locale <LOCALE>
+                        Set the language for the wizard (en, cn)
+                    --log-file <LOG_FILE>
+                        file in which logs will be stored (default: eim.log)
+                -h, --help
+                        Print help (see a summary with '-h')
+                -V, --version
+                        Print version
+                          </code></pre>
+        </section>
+
+
+        <section>
+          <h3>Můžete poskytnout konfigurační soubor</h3>
+          <pre><code data-trim data-noescape>
+            ```toml
+            path = "/tmp/esp-new/"
+            idf_path = "/tmp/esp-new/v5.3/esp-idf"
+            tool_download_folder_name = "dist"
+            tool_install_folder_name = "tools"
+            target = ["all"]
+            idf_versions = ["v5.3"]
+            tools_json_file = "tools/tools.json"
+            idf_tools_path = "./tools/idf_tools.py"
+            mirror = "https://github.com"
+            idf_mirror = "https://github.com"
+            ```
+                          </code></pre>
+        </section>
+        <section data-markdown>
+          ### nebo můžete nastavit parametry jako proměnné prostředí
+        </section>
+      </section>
+      <section data-markdown>
+        ## Výsledky instalace jsou opakovatelné
+        - na konci průvodce je uživatel dotázán, zda chce uložit konfiguraci
+        - tuto konfiguraci lze snadno distribuovat
+        - při poskytnutí jako vstup provede EIM přesně stejnou instalaci
+      </section>
+      <section>
+        <h2>Snadné použití</h2>
+        <p>Jednoduchý průvodce vás provede procesem instalace</p>
+        <img style="width: 255%;" src="./images/wizard.gif">
+      </section>
+      <section>
+        <h2>Vícejazyčnost</h2>
+        <p>CLI aplikace je k dispozici v angličtině a čínštině a seznam jazyků lze snadno rozšířit</p>
+        <p>CLI 应用既可以用英语和中文来交互，并且语言列表是很容易扩展的</p>
+        <img style="width: 255%;" src="./images/cn.gif">
+      </section>
+      <section data-markdown>
+        ## Jediný binární soubor
+        - snadno distribuovatelný
+        - nemé závislosti
+        - Na Windows nabízí instalaci prerekvizit IDF
+        - na POSIX systémech očekáváme, že uživatel preferuje vlastní instalaci
+
+
+      </section>
+      <section data-markdown>
+        ## budoucí cíle
+        - primární nástroj pro instalaci IDF
+        - plná integrace s pluginy IDE
+        - GUI verze
+        - offline instalace
+
+      </section>
+      <section>
+        <div>
+          <p>Prosím, jakékoli problémy nahlaste jako GitHub issues</p>
+          <div style="width: 33%;left:0px;display: inline-block;">
+            <h2>Releasy:</h2>
+            <img style="width: 100%;" src="./images/releases.svg">
+          </div>
+          <div style="width: 33%;right:0px;display: inline-block;">
+            <h2>Dokumentace:</h2>
+            <img style="width: 100%;" src="./images/docs.svg">
+          </div>
+        </div>
+        <div>
+          <p>Děkujeme za pozornost</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
